@@ -13,6 +13,10 @@ export default {
     "app-header": Header
   }
 };
+
+/* 
+  1. Post user from signup to firebase with Axios
+*/
 </script>
 
 <style>
