@@ -18,7 +18,8 @@ export default {
   1. Axios: POSTing and GETting user in signup/dashboard to/from 
     firebase with Axios (specifying baseURL/customised axios instance)
 
-  
+  2. Firebase Auth: Sign-up, sign-in initiating action in Vuex store,
+    token-storage and Protecting routes with Auth Guard
 */
 </script>
 

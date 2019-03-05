@@ -52,7 +52,6 @@
 </template>
 
 <script>
-import axios from "../../axios-auth";
 export default {
   data() {
     return {
@@ -60,7 +59,7 @@ export default {
       age: null,
       password: "",
       confirmPassword: "",
-      country: "usa",
+      country: "uk",
       hobbyInputs: [],
       terms: false
     };
@@ -86,11 +85,8 @@ export default {
         hobbies: this.hobbyInputs.map(hobby => hobby.value),
         terms: this.terms
       };
-      console.log(formData);
-      axios
-        .post("/users.json", formData)
-        .then(res => console.log(res))
-        .then(error => console.log(error));
+
+      this.$store.dispatch("signup", formData);
     }
   }
 };

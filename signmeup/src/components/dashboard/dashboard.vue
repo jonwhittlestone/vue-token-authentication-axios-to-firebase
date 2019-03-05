@@ -14,21 +14,13 @@ export default {
       email: ""
     };
   },
+  computed: {
+    email() {
+      return this.$store.getters.user.email;
+    }
+  },
   created() {
-    axios
-      .get("users.json")
-      .then(res => {
-        // console.log(res)
-        const users = [];
-        const data = res.data;
-        for (let key in data) {
-          const user = data[key];
-          user.id = key;
-          users.push(user);
-        }
-        this.email = users[0].email;
-      })
-      .catch(error => console.log(error));
+    this.$store.dispatch("fetchUser");
   }
 };
 </script>
