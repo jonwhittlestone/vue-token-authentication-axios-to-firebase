@@ -15,7 +15,10 @@ export default {
 };
 
 /* 
-  1. Post user from signup to firebase with Axios
+  1. Axios: POSTing and GETting user in signup/dashboard to/from 
+    firebase with Axios (specifying baseURL/customised axios instance)
+
+  
 */
 </script>
 
