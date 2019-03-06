@@ -4,9 +4,6 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://auth-vuejs-example.firebaseio.com";
 
-// a custom header 'Accepts'
-axios.defaults.headers.get["Accepts"] = "application/json";
-
 // manipulate the config?
 const reqInterceptor = axios.interceptors.request.use(config => {
   console.log("Request Interceptor", config);
