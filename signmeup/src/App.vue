@@ -11,6 +11,10 @@ export default {
   name: "app",
   components: {
     "app-header": Header
+  },
+  created() {
+    // auto check if user is logged in when app starts
+    this.$store.dispatch("tryAutoLogin");
   }
 };
 
@@ -20,6 +24,9 @@ export default {
 
   2. Firebase Auth: Sign-up, sign-in initiating action in Vuex store,
     token-storage and Protecting routes with `beforeEnter` route guard
+
+  3. Auth Quality of Life: UI sugar, log out and auto-login to persist a valid token
+    accross page reloads
 */
 </script>
 
