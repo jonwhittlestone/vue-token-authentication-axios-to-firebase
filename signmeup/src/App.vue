@@ -27,6 +27,8 @@ export default {
 
   3. Auth Quality of Life: UI sugar, log out and auto-login to persist a valid token
     accross page reloads
+
+  4. Input validation with vuelidate
 */
 </script>
 

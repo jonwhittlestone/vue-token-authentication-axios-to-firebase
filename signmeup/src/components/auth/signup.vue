@@ -3,13 +3,16 @@
   <div id="signup">
     <div class="signup-form">
       <form @submit.prevent="onSubmit">
-        <div class="input">
+        <div class="input" :class="{invalid: $v.email.$error}">
           <label for="email">Mail</label>
-          <input type="email" id="email" v-model="email">
+          <input type="email" id="email" v-model="email" @blur="$v.email.$touch()">
+          <p v-if="!$v.email.email">Please provide a valid email address</p>
+          <p v-if="!$v.email.required">This field must not be empty</p>
         </div>
-        <div class="input">
+        <div class="input" :class="{invalid: $v.age.$error}">
           <label for="age">Your Age</label>
-          <input type="number" id="age" v-model.number="age">
+          <input type="number" id="age" v-model.number="age" @blur="$v.age.$touch()">
+          <p v-if="!$v.age.minVal">You have to be at least {{ $v.age.$params.minVal.min }} old</p>
         </div>
         <div class="input">
           <label for="password">Password</label>
@@ -52,6 +55,8 @@
 </template>
 
 <script>
+import { required, email, numeric, minValue } from "vuelidate/lib/validators";
+
 export default {
   data() {
     return {
@@ -63,6 +68,18 @@ export default {
       hobbyInputs: [],
       terms: false
     };
+  },
+  validations: {
+    // property in data and validations key must have the same name
+    email: {
+      required: required,
+      email: email
+    },
+    age: {
+      required,
+      numeric,
+      minVal: minValue(18)
+    }
   },
   methods: {
     onAddHobby() {
@@ -177,5 +194,10 @@ export default {
   background-color: transparent;
   color: #ccc;
   cursor: not-allowed;
+}
+
+.input.invalid input {
+  border: 1px solid red;
+  background-color: lightsalmon;
 }
 </style>

@@ -1,6 +1,10 @@
 import Vue from "vue";
 import App from "./App.vue";
 import axios from "axios";
+import Vuelidate from "vuelidate";
+
+// How to add/inject many 3rd party packages
+Vue.use(Vuelidate);
 
 axios.defaults.baseURL = "https://auth-vuejs-example.firebaseio.com";
 
